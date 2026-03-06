@@ -590,7 +590,10 @@ class corosync (
       # list the members to join.
       # TODO - verify that this is safe when quorum_members is a list of IP
       # addresses
-      $node_string = join($quorum_members, ' ')
+      $node_string = $quorum_members_names ? {
+        undef => join($quorum_members, ' '),
+        default => join($quorum_members_names.map |$i,$v| { "${v} addr=${quorum_members[$i]}" }, ' '),
+      }
 
       # Define the pcs host command, this changed with 0.10.0 as per #513
       $pcs_auth_command = versioncmp($pcs_version, '0.10.0') ? {
