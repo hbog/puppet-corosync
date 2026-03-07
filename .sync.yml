@@ -13,3 +13,6 @@ spec/spec_helper.rb:
   spec_overrides:
     - "require 'spec_helper_corosync'"
     - "require 'spec_helper_methods'"
+.github/workflows/ci.yml:
+  with:
+    beaker_hypervisor: 'docker'
