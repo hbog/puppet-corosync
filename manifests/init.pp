@@ -258,6 +258,12 @@
 #   [corosync-qdevice man page](https://www.systutorials.com/docs/linux/man/8-corosync-qdevice/)
 #   for details.
 #
+# @param quorum_device_sync_timeout
+#   Specifies how often corosync-qdevice should call the
+#   votequorum_qdevice_poll function during a sync phase. See the
+#   [corosync-qdevice man page](https://www.systutorials.com/docs/linux/man/8-corosync-qdevice/)
+#   for details.
+#
 # @param package_quorum_device
 #   The name of the package providing the quorum device functionality. This
 #   parameter is mandatory if manage_quorum_device is true.
@@ -391,6 +397,7 @@ class corosync (
   Boolean $manage_quorum_device                                         = false,
   Optional[Stdlib::Fqdn] $quorum_device_host                            = undef,
   Corosync::QuorumAlgorithm $quorum_device_algorithm                    = 'ffsplit',
+  Optional[Integer] $quorum_device_sync_timeout                         = undef,
   Optional[String] $package_quorum_device                               = $corosync::params::package_quorum_device,
   Optional[Sensitive[String]] $sensitive_quorum_device_password         = undef,
   Optional[String[1]] $cluster_name                                     = undef,

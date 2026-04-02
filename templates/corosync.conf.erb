@@ -136,7 +136,9 @@ quorum {
 <% if @quorum_device_algorithm == 'ffsplit' -%>
     votes: 1
 <% end -%>
-
+<% if @quorum_device_sync_timeout -%>
+    sync_timeout: <%= @quorum_device_sync_timeout %>
+<% end -%>
     net {
       algorithm: <%= @quorum_device_algorithm %>
       host:      <%= @quorum_device_host %>
