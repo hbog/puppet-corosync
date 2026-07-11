@@ -400,6 +400,8 @@ class corosync (
   Optional[Integer] $quorum_device_sync_timeout                         = undef,
   Optional[String] $package_quorum_device                               = $corosync::params::package_quorum_device,
   Optional[Sensitive[String]] $sensitive_quorum_device_password         = undef,
+  Optional[Enum['on','off','sync']] $quorum_device_heuristic_mode       = undef,
+  Optional[Variant[Array,String]] $quorum_device_heuristic_exec         = undef,
   Optional[String[1]] $cluster_name                                     = undef,
   Optional[Integer] $join                                               = undef,
   Optional[Integer] $consensus                                          = undef,

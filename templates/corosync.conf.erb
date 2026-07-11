@@ -143,6 +143,14 @@ quorum {
       algorithm: <%= @quorum_device_algorithm %>
       host:      <%= @quorum_device_host %>
     }
+<% if @quorum_device_heuristic_mode -%>
+    heuristics {
+      mode: <%= @quorum_device_heuristic_mode %>
+<% Array(@quorum_device_heuristic_exec).each_with_index do |exec, i| -%>
+      exec_<%= i %>: <%= exec %>
+<% end -%>
+    }
+<% end -%>
   }
 <% end -%>
 }
